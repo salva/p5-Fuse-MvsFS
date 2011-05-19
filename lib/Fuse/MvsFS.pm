@@ -1,38 +1,38 @@
 package Fuse::MvsFS;
 
-use 5.010001;
-use strict;
-use warnings;
-
-require Exporter;
-
-our @ISA = qw(Exporter);
-
-# Items to export into callers namespace by default. Note: do not export
-# names by default without a very good reason. Use EXPORT_OK instead.
-# Do not simply export all your public functions/methods/constants.
-
-# This allows declaration	use Fuse::MvsFS ':all';
-# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
-# will save memory.
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-	
-);
-
 our $VERSION = '0.01';
 
+use 5.010;
+use warnings;
+use strict;
 
-# Preloaded methods go here.
+use Fuse;
+use Carp;
+
+use Fuse::MvsFS::DB::Simple;
+
+
+sub init {
+    db->
+}
+
+sub main {
+    my %opts = @_;
+    my $mountpoint = delete $opts{mountpoint};
+    my $basedir = delete $opts{basedir};
+
+    chdir $basedir or croak "Unable to chdir to $basedir: $!";
+
+    Fuse::main(mountpoint => $mountpoint, threaded => 0);
+}
+
+
+
+
+
 
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
